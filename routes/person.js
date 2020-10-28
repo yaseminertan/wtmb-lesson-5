@@ -32,9 +32,9 @@ router.post('/:id/meetups', async (req, res) => {
   res.send(user)
 })
 
-router.get('/:id/peers-over-18', async (req, res) => {
+router.get('/:id/people', async (req, res) => {
   const user = await PersonService.find(req.params.id)
-  const peers = await user.findPeersOver18()
+  const peers = await user.findPeople()
   res.send(peers)
 })
 

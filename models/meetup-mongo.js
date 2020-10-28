@@ -5,11 +5,14 @@ const MeetupSchema = new mongoose.Schema({
     location: String,
     attendees: [{
         type: mongoose.SchemaTypes.ObjectId,
-        ref: 'Person'
+        ref: 'Person',
+        autopopulate:{
+            maxDepth:1
+        }
     }]
 })
 
-//MeetupSchema.plugin(require('mongoose-autopopulate'))
+MeetupSchema.plugin(require('mongoose-autopopulate'))
 
 const MeetupModel = mongoose.model('Meetup', MeetupSchema)
 
